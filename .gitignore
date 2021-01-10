@@ -76,3 +76,6 @@ fabric.properties
 # golang file binaries
 bin/*
 
+# runtime error logging
+runtime/*
+

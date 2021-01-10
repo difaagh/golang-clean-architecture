@@ -1,13 +1,15 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/recover"
 	"golang-clean-architecture/config"
 	"golang-clean-architecture/controller"
 	"golang-clean-architecture/exception"
+	"golang-clean-architecture/pkg/logging"
 	"golang-clean-architecture/repository"
 	"golang-clean-architecture/service"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
 func main() {
@@ -15,6 +17,8 @@ func main() {
 	configuration := config.New()
 	database := config.NewMongoDatabase(configuration)
 
+	// Setup Logger
+	logging.Setup()
 	// Setup Repository
 	productRepository := repository.NewProductRepository(database)
 
